@@ -56,7 +56,7 @@ Font Book first. Design apps such as Figma may need a restart to pick up the
 new font.
 
 ## How it was made
-
+![construction](images/construction.png)
 - **Strokes:** each letter's centre lines and pen radii come from the
   private `strk` table in Apple's `MacintoshSkeletal.otf`. They are drawn as
   uniform cubic B-splines, with in-letter snapping and *injection* (a stroke
