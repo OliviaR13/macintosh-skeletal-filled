@@ -17,6 +17,7 @@ renderer.
 |---|---|---|
 | `fonts/MacintoshSkeletalVariable.otf` | Macintosh Skeletal Variable | Variable, `wght` 100 to 900 |
 | `fonts/MacintoshSkeletalFilled.otf` | Macintosh Skeletal Filled | Static, Apple's on-screen weight |
+| `fonts/MacintoshSkeletalVariableJoined.otf` | Macintosh Skeletal Variable Joined | Variable, with more letters joined ([see below](#joined)) |
 
 ### Variable weight
 
@@ -48,6 +49,29 @@ the same result.
   Each stroke is its own round tube, overlapping the others, so junctions are
   a plain crease rather than a soft blend.
 
+### Joined
+
+![Variable and Variable Joined](images/joined.png)
+
+In Apple's design, some letters don't join the letter after them. The pen
+lifts at the end of the letter, and the next letter starts on its own just
+beside it. At Apple's weight the two only just touch; at lighter weights you
+see a gap. This affects Latin `p`, Cyrillic `р`, `ф`, `б`, `э` and `ѕ`, Greek
+`ρ`, `β` and `δ`, German `ß`, and a few others such as `ɔ` and `ɓ`.
+
+**Macintosh Skeletal Variable Joined** joins them all:
+
+- For `p`, `р`, `ф`, `б`, `э` and `ѕ` it uses one-stroke forms that Apple
+  drew and included in its font but never selects. The letter's last stroke
+  sweeps straight into the next letter.
+- For the others (`ρ`, `β`, `δ`, `ß`, `ɔ`, `ɓ`, ...) a connecting stroke
+  leaves the letter body and runs into the next letter.
+
+Apple's renderer never draws these joins, so their shapes are modelled on
+Apple's other joins rather than recorded from it. Capitals and everything else
+are the same as Macintosh Skeletal Variable. It installs as a separate family,
+so you can keep both.
+
 ## Install
 
 Download the `.otf` file you want and double-click it, then click
@@ -77,8 +101,12 @@ new font.
 - About 6% of joins (mostly letters with a slash or bar, such as `ø` and
   `ӫ`) couldn't be read cleanly from Apple's renderer and use a fitted model
   instead, which is typically within a few font units.
-- Precomposed accented letters that Apple's font itself doesn't contain
-  (for example `ä`, `é`) fall back to another font.
+- Apple's font has no ready-made accented letters (`é`, `ä`, `й`, `ё`, ...),
+  only base letters and separate accents. These fonts add 606 of them, built
+  from Apple's own base letter and accent, so they work in Pages, Keynote and
+  other macOS apps as well as in Figma and browsers.
+- In the Joined font, the extra joins (after `p`, `р`, `ρ`, `ß`, ...) are
+  modelled (see [Joined](#joined)).
 - Apple's animation (the write-on, the glass shading) isn't part of a font.
 
 ## Found something weird?
