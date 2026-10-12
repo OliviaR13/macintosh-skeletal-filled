@@ -53,6 +53,10 @@ the same result.
 
 ![Variable and Variable Joined](images/joined.png)
 
+The coloured strokes are the joins the Joined font changes. In Apple's design
+each is a short separate stroke that starts beside the letter; in the Joined
+font it sweeps out of the letter itself into the next one.
+
 In Apple's design, some letters don't join the letter after them. The pen
 lifts at the end of the letter, and the next letter starts on its own just
 beside it. At Apple's weight the two only just touch; at lighter weights you
