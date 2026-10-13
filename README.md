@@ -17,7 +17,9 @@ renderer.
 |---|---|---|
 | `fonts/MacintoshSkeletalVariable.otf` | Macintosh Skeletal Variable | Variable, `wght` 100 to 900 |
 | `fonts/MacintoshSkeletalFilled.otf` | Macintosh Skeletal Filled | Static, Apple's on-screen weight |
-| `fonts/MacintoshSkeletalVariableJoined.otf` | Macintosh Skeletal Variable Joined | Variable, with more letters joined ([see below](#joined)) |
+
+Both fonts have two options, off by default: **Crossing o** and **Join
+every letter** ([see below](#options)). With both off you get Apple's design.
 
 ### Variable weight
 
@@ -49,15 +51,66 @@ the same result.
   Each stroke is its own round tube, overlapping the others, so junctions are
   a plain crease rather than a soft blend.
 
-### The o
+## Options
 
-![Two kinds of o](images/midexit.png)
+Both fonts have two options. They are off by default, and you can switch
+each one on or off on its own, for any part of your text.
+
+### Crossing o
+
+![Crossing o off and on](images/options-crossing-o.png)
+
+The `o` from Apple's 2020 hello greetings: the bowl starts at the top, and
+its end curls back inside and leaves through the bowl, rising straight into
+the next letter. It's used before `l`, `b`, `h`, `k` and `f`, where the 2020
+greetings use it (`hola`, `olá`, `dobar`); every other `o` stays Apple's.
+
+### Join every letter
+
+![Join every letter off and on](images/options-join.png)
+
+In Apple's design, some letters don't join the letter after them (see
+[below](#why-some-letters-dont-join)). This option joins them all. It
+replaces the separate *Macintosh Skeletal Variable Joined* font: if you
+installed it, you can remove it in Font Book.
+
+### How to switch them on
+
+**Pages, Keynote, TextEdit:** select the text, press **⌘T** (Format › Font ›
+Show Fonts), click the **⋯** button at the top left of the Fonts window and
+choose **Typography…**. Under **Alternative Stylistic Sets**, tick
+**Crossing o** and/or **Join every letter**. The weight (Thin to Black) is in
+the font style menu of the Format sidebar.
+
+**Figma:** select the text layer, click the **Type settings** button (the
+sliders icon) in the Text section, open **Details** and switch on **Crossing
+o** and/or **Join every letter** under **Stylistic sets**. The **Weight**
+slider is in the same panel.
+
+**CSS:**
+
+```css
+.hello {
+  font-family: "Macintosh Skeletal Variable";
+  font-feature-settings: "ss01" 1;   /* Crossing o */
+  /* font-feature-settings: "ss02" 1;   Join every letter */
+  /* font-feature-settings: "ss01" 1, "ss02" 1;   both */
+}
+```
+
+Keep **Contextual Alternates** on (it is by default): every join in these
+fonts depends on it. Apps that don't apply it draw each letter on its own.
+
+## The o
+
+![The kinds of o](images/o-forms.png)
 
 Apple's font finishes an `o` in two ways. Usually the pen leaves over the
 top into the next letter. Before `e` or `t` (Cyrillic `е`, `л`, `м`, `я`,
 `ґ`, `љ`) it curls back past the middle in a small loop and runs into the
 letter at mid-height. Apple's own joining rules choose the form, and these
-fonts follow the same rules, so it happens automatically.
+fonts follow the same rules, so it happens automatically. The third kind,
+the crossing `o`, is the [option](#crossing-o) above.
 
 ![hola](images/hola.png)
 
@@ -67,16 +120,16 @@ made with Apple's internal versions of the handwriting ("Macintosh
 Skeletal" 2.0 from 2025, and "Macintosh 3D" 1.1 from 2020). In the 2025
 "hola" the join out of the `o` dips to mid-height and the `l` starts its
 loop there. In the 2020 one the `o` is a stroke of its own whose end curls
-inside the bowl and leaves through it. The font Apple ships has neither, so
-these fonts can't draw them either.
+inside the bowl and leaves through it. The font Apple ships has neither. The
+[Crossing o](#crossing-o) option is that 2020 `o`, drawn from Apple's
+greeting and joined with these fonts' joins.
 
-### Joined
+## Why some letters don't join
 
-![Variable and Variable Joined](images/joined.png)
-
-The coloured strokes are the joins the Joined font changes. In Apple's design
-each is a short separate stroke that starts beside the letter; in the Joined
-font it sweeps out of the letter itself into the next one.
+The coloured strokes in the [image above](#join-every-letter) are the joins
+the option changes. In Apple's design each is a short separate stroke that
+starts beside the letter; with the option on it sweeps out of the letter
+itself into the next one.
 
 In Apple's design, some letters don't join the letter after them. The pen
 lifts at the end of the letter, and the next letter starts on its own just
@@ -84,7 +137,7 @@ beside it. At Apple's weight the two only just touch; at lighter weights you
 see a gap. This affects Latin `p`, Cyrillic `р`, `ф`, `б`, `э` and `ѕ`, Greek
 `ρ`, `β` and `δ`, German `ß`, and a few others such as `ɔ` and `ɓ`.
 
-**Macintosh Skeletal Variable Joined** joins them all:
+**Join every letter** joins them all:
 
 - For `p`, `р`, `ф`, `б`, `э` and `ѕ` it uses one-stroke forms that Apple
   drew and included in its font but never selects. The letter's last stroke
@@ -94,8 +147,7 @@ see a gap. This affects Latin `p`, Cyrillic `р`, `ф`, `б`, `э` and `ѕ`, Gre
 
 Apple's renderer never draws these joins, so their shapes are modelled on
 Apple's other joins rather than recorded from it. Capitals and everything else
-are the same as Macintosh Skeletal Variable. It installs as a separate family,
-so you can keep both.
+stay the same.
 
 ## Install
 
@@ -130,14 +182,41 @@ new font.
   only base letters and separate accents. These fonts add 606 of them, built
   from Apple's own base letter and accent, so they work in Pages, Keynote and
   other macOS apps as well as in Figma and browsers.
-- In the Joined font, the extra joins (after `p`, `р`, `ρ`, `ß`, ...) are
-  modelled (see [Joined](#joined)).
+- With **Join every letter** on, the extra joins (after `p`, `р`, `ρ`, `ß`,
+  ...) are modelled (see
+  [Why some letters don't join](#why-some-letters-dont-join)). So are the
+  joins out of the **Crossing o**: Apple's renderer never draws them.
 - Apple's animation (the write-on, the glass shading) isn't part of a font.
 
-## Found something weird?
+## Troubleshooting
 
-Please open an issue on this repository with the text you typed, the app and
-a screenshot.
+**Letters don't join, or there are blobs where they should join.** Every
+join in these fonts comes from an OpenType feature called *contextual
+alternates*. Make sure it's on:
+
+- **Pages, Keynote, TextEdit:** ⌘T › **⋯** › **Typography…** › **Contextual
+  Alternates** should be ticked (it is by default).
+- **Figma:** Type settings › **Details** › **Contextual alternates** should
+  be on.
+- **After Effects:** its default text engine doesn't apply contextual
+  alternates. Try Preferences › Type › Text Engine › **South Asian and
+  Middle Eastern**, then make a new text layer, or set the text in Figma or
+  Illustrator and bring it in as shapes.
+
+**The font, or its options, don't show up.** Check that the font is enabled
+in Font Book and remove any older copy first (including the old
+*Macintosh Skeletal Variable Joined*), then quit the app completely and
+reopen it. The options are only in the fonts from this repository, not in
+Apple's own *Macintosh Skeletal*.
+
+**Pages or Keynote shows no weights.** Install the latest
+`MacintoshSkeletalVariable.otf` from this repository; older builds were
+marked italic, which hid the weight menu.
+
+### Found something weird?
+
+Please [open an issue](../../issues) on this repository with the text you
+typed, the app (and its version) and a screenshot.
 
 ## License
 
