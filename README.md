@@ -49,6 +49,27 @@ the same result.
   Each stroke is its own round tube, overlapping the others, so junctions are
   a plain crease rather than a soft blend.
 
+### The o
+
+![Two kinds of o](images/midexit.png)
+
+Apple's font finishes an `o` in two ways. Usually the pen leaves over the
+top into the next letter. Before `e` or `t` (Cyrillic `е`, `л`, `м`, `я`,
+`ґ`, `љ`) it curls back past the middle in a small loop and runs into the
+letter at mid-height. Apple's own joining rules choose the form, and these
+fonts follow the same rules, so it happens automatically.
+
+![hola](images/hola.png)
+
+The `o` in Apple's hello-screen greetings isn't in the font. The greetings
+aren't written with it: each language has its own pre-drawn path in macOS,
+made with Apple's internal versions of the handwriting ("Macintosh
+Skeletal" 2.0 from 2025, and "Macintosh 3D" 1.1 from 2020). In the 2025
+"hola" the join out of the `o` dips to mid-height and the `l` starts its
+loop there. In the 2020 one the `o` is a stroke of its own whose end curls
+inside the bowl and leaves through it. The font Apple ships has neither, so
+these fonts can't draw them either.
+
 ### Joined
 
 ![Variable and Variable Joined](images/joined.png)
