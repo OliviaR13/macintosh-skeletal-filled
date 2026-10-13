@@ -114,15 +114,15 @@ the crossing `o`, is the [option](#crossing-o) above.
 
 ![hola](images/hola.png)
 
-The `o` in Apple's hello-screen greetings isn't in the font. The greetings
-aren't written with it: each language has its own pre-drawn path in macOS,
-made with Apple's internal versions of the handwriting ("Macintosh
-Skeletal" 2.0 from 2025, and "Macintosh 3D" 1.1 from 2020). In the 2025
-"hola" the join out of the `o` dips to mid-height and the `l` starts its
-loop there. In the 2020 one the `o` is a stroke of its own whose end curls
-inside the bowl and leaves through it. The font Apple ships has neither. The
-[Crossing o](#crossing-o) option is that 2020 `o`, drawn from Apple's
-greeting and joined with these fonts' joins.
+The hello-screen greetings aren't written with Apple's font. Each language
+has its own pre-drawn path in macOS, made with Apple's internal versions of
+the handwriting ("Macintosh Skeletal" 2.0 from 2025, and "Macintosh 3D" 1.1
+from 2020), and their `o` is not one Apple's font has. In the 2025 "hola"
+the join out of the `o` dips to mid-height and the `l` starts its loop
+there. In the 2020 one the `o` is a stroke of its own whose end curls inside
+the bowl and leaves through it. These fonts bring that 2020 `o` back as the
+[Crossing o](#crossing-o) option, drawn from Apple's greeting and joined
+with the fonts' own joins.
 
 ## Why some letters don't join
 
